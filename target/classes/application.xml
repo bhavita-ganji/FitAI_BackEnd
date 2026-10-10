@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <comment>FitAI Backend Application Configuration - XML Format</comment>
+
+    <!-- Server Port (Render sets $PORT dynamically, default 8080 locally) -->
+    <entry key="server.port">${PORT:8080}</entry>
+    <entry key="server.error.include-message">always</entry>
+    <entry key="server.error.include-binding-errors">always</entry>
+
+    <!-- Spring Application Metadata -->
+    <entry key="spring.application.name">fitai-backend</entry>
+    <entry key="spring.profiles.active">${SPRING_PROFILES_ACTIVE:postgres}</entry>
+
+    <!-- JPA & Hibernate Configuration -->
+    <entry key="spring.jpa.open-in-view">false</entry>
+    <entry key="spring.jpa.show-sql">false</entry>
+    <entry key="spring.jpa.properties.hibernate.format_sql">false</entry>
+    <entry key="spring.jpa.hibernate.ddl-auto">${SPRING_JPA_HIBERNATE_DDL_AUTO:update}</entry>
+
+    <!-- Cache Configuration -->
+    <entry key="spring.cache.type">caffeine</entry>
+    <entry key="spring.cache.cache-names">exercises,foodItems,knowledgeDocs</entry>
+    <entry key="spring.cache.caffeine.spec">maximumSize=500,expireAfterWrite=60m</entry>
+
+    <!-- Datasource Default Configuration -->
+    <entry key="spring.datasource.url">${SPRING_DATASOURCE_URL:jdbc:h2:mem:fitai_db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=PostgreSQL}</entry>
+    <entry key="spring.datasource.driver-class-name">${SPRING_DATASOURCE_DRIVER:}</entry>
+    <entry key="spring.datasource.username">${SPRING_DATASOURCE_USERNAME:sa}</entry>
+    <entry key="spring.datasource.password">${SPRING_DATASOURCE_PASSWORD:}</entry>
+    <entry key="spring.datasource.hikari.maximum-pool-size">${DB_POOL_MAX_SIZE:10}</entry>
+    <entry key="spring.datasource.hikari.minimum-idle">${DB_POOL_MIN_IDLE:2}</entry>
+
+    <!-- Security & JWT Configuration -->
+    <entry key="app.jwt.secret">${JWT_SECRET:404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970}</entry>
+    <entry key="app.jwt.expiration-ms">86400000</entry>
+
+    <!-- AI Configuration -->
+    <entry key="app.ai.provider">${AI_PROVIDER:demo}</entry>
+    <entry key="app.ai.api-key">${AI_API_KEY:}</entry>
+    <entry key="app.ai.model">${AI_MODEL:gpt-4o-mini}</entry>
+
+    <!-- CORS Configuration (Frontend: https://fit-ai-frontend-gamma.vercel.app/) -->
+    <entry key="app.cors.allowed-origins">${CORS_ALLOWED_ORIGINS:https://fit-ai-frontend-gamma.vercel.app,https://*.vercel.app,https://*.onrender.com,http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173}</entry>
+
+    <!-- Actuator & Swagger Endpoints -->
+    <entry key="management.endpoints.web.exposure.include">health,info,metrics</entry>
+    <entry key="management.endpoint.health.show-details">always</entry>
+    <entry key="springdoc.api-docs.path">/v3/api-docs</entry>
+    <entry key="springdoc.swagger-ui.path">/swagger-ui.html</entry>
+    <entry key="springdoc.swagger-ui.operations-sorter">method</entry>
+</properties>
