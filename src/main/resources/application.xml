@@ -10,7 +10,7 @@
 
     <!-- Spring Application Metadata -->
     <entry key="spring.application.name">fitai-backend</entry>
-    <entry key="spring.profiles.active">${SPRING_PROFILES_ACTIVE:postgres}</entry>
+    <entry key="spring.profiles.active">${SPRING_PROFILES_ACTIVE:default}</entry>
 
     <!-- JPA & Hibernate Configuration -->
     <entry key="spring.jpa.open-in-view">false</entry>

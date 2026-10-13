@@ -36,7 +36,7 @@ public class UserService {
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + userId));
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     public UserProfileDto getProfile(Long userId) {
         UserProfile profile = userProfileRepository.findByUserId(userId)
                 .orElseGet(() -> {

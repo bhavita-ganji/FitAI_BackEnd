@@ -1,4 +1,4 @@
-package com.fitai.service;
+﻿package com.fitai.service;
 
 import com.fitai.dto.DailyNutritionSummaryDto;
 import com.fitai.dto.FoodItemDto;
@@ -219,7 +219,7 @@ public class NutritionService {
     }
 
     // Nutrition Goals
-    @Transactional(readOnly = true)
+    @Transactional
     public NutritionGoalDto getNutritionGoal(Long userId) {
         NutritionGoal goal = nutritionGoalRepository.findByUserId(userId)
                 .orElseGet(() -> {
@@ -296,3 +296,4 @@ public class NutritionService {
         return dto;
     }
 }
+

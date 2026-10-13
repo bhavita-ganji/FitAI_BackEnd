@@ -42,7 +42,7 @@ COPY --from=builder /build/target/fitai-backend-*.jar app.jar
 EXPOSE 8080 10000
 
 # Environment variables tuned for Render cloud container limits
-ENV SPRING_PROFILES_ACTIVE=postgres \
+ENV SPRING_PROFILES_ACTIVE=default \
     JAVA_OPTS="-Xms128m -Xmx384m -XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0 -XX:+UseG1GC -XX:+ExitOnOutOfMemoryError"
 
 # Healthcheck monitoring Spring Boot Actuator
